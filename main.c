@@ -4,13 +4,15 @@
 
 int main()
 {
-	static char val;
+    static int val;
+    static char car;
 
-
-
-	scanf("%c",&val);
-	printf("%i",CharToPosition(val));
-	return 0;
+    printf("Entrer votre char : ");
+    scanf("%c",&car);
+    printf("Entrer votre rotation : ");
+    scanf("%i",&val);
+    printf("%c\n",OldCharToNewChar(car,val));
+    return 0;
 }
 
 

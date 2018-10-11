@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "Vigenere.c"
 
-int VigenereMethods();
+int VigenereMethods(char text[],int rot);
 
 int CharToPosition(char car);
 
