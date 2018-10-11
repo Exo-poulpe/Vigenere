@@ -4,8 +4,13 @@
 
 int main()
 {
-VigenereMethods();
-return 0;
+	static char val;
+
+
+
+	scanf("%c",&val);
+	printf("%i",CharToPosition(val));
+	return 0;
 }
 
 

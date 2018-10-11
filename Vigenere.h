@@ -2,8 +2,14 @@
 #include <stdlib.h>
 #include "Vigenere.c"
 
-char VigenereMethods();
+int VigenereMethods();
 
-int CharToPosition(char car,int rot);
+int CharToPosition(char car);
+
+char OldCharToNewChar(char car,int rot);
+
+int IsInAlphabet(int value);
+
+
 
 char PositionToChar(int pos);
