@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define DEFAULT_MAX_SIZE_OUTPUT 1000
+#define DEFAULT_MAX_SIZE_OUTPUT 100
 
 static char Alphabet[] = {'a','b','c','d','e','f','g','h','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 
@@ -37,7 +37,7 @@ int CharToPosition(char car)
 }
 
 
-char OldCharToNewChar(char car,int rot)
+char* OldCharToNewChar(char* car,int rot)
 {
     CharPos = CharToPosition(car);
     CharPos = IsInAlphabet(CharPos+rot);
