@@ -5,13 +5,14 @@
 int main()
 {
     static int val;
-    static char car;
+    static char car,Out;
 
     printf("Entrer votre char : ");
     scanf("%c",&car);
     printf("Entrer votre rotation : ");
     scanf("%i",&val);
-    printf("%c\n",OldCharToNewChar(car,val));
+    Out = OldCharToNewChar(car,val);
+    printf("Out : %c\n",Out);
     return 0;
 }
 
