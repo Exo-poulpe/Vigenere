@@ -3,7 +3,7 @@
 #include "Vigenere.c"
 
 
-int VigenereMethods(char text[],int rot);
+void VigenereMethods(char text[],int rot,char textout[]);
 
 int CharToPosition(char car);
 

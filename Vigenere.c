@@ -22,8 +22,6 @@ int IsInAlphabet(int value);
 
 char PositionToChar(int pos);
 
-int VigenereMethods(char text[],int rot);
-
 int CharToPosition(char car);
 
 
@@ -41,13 +39,13 @@ char OldCharToNewChar(char car,int rot)
 
 
 
-int VigenereMethods(char text[],int rot)
+void VigenereMethods(char text[],int rot,char textOut[])
 {
     for(int i=0; i<sizeof(text); i++)
         {
-            OutPut[i] = OldCharToNewChar(text[i],rot);
+            textOut[i] = OldCharToNewChar(text[i],rot);
         }
-    return OutPut;
+
 }
 
 int CharToPosition(char car)
