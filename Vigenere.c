@@ -11,14 +11,16 @@
 
 #define DEFAULT_MAX_SIZE_OUTPUT 100
 
-static char Alphabet[] = {'a','b','c','d','e','f','g','h','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+static char Alphabet[] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 
 static int CharPos = 0;
 static char OutPut[DEFAULT_MAX_SIZE_OUTPUT];
 
 char OldCharToNewChar(char car,int rot);
 
-int IsInAlphabet(int value);
+int MakeInAlphabet(int value);
+
+int CharIsInAlphabet(char c);
 
 char PositionToChar(int pos);
 
@@ -32,18 +34,40 @@ int CharToPosition(char car);
 char OldCharToNewChar(char car,int rot)
 {
     CharPos = CharToPosition(car);
-    CharPos = IsInAlphabet(CharPos+rot);
+    CharPos = MakeInAlphabet(CharPos+rot);
     car = Alphabet[CharPos];
     return car;
 }
 
 
 
-void VigenereMethods(char text[],int rot,char textOut[])
+void VigenereMethods(char text[],char pass[],char textOut[])
 {
-    for(int i=0; i<sizeof(text); i++)
+    for(int i=0,j=0; i<strlen(text); i++,j++)
         {
-            textOut[i] = OldCharToNewChar(text[i],rot);
+            if(CharIsInAlphabet(text[i])==1)
+                {
+                    if(j>strlen(pass)-1)
+                        {
+                            j=0;
+                        }
+                    if(text[i]!= ' ')
+                        {
+                            printf("Pos of text :%c, %i\n",text[i],CharToPosition(text[i]));
+                            printf("Pos of Char passwd :%c, %i\n",pass[j],CharToPosition(pass[j]));
+                            textOut[i] = OldCharToNewChar(text[i],CharToPosition(pass[j]));
+                        }
+                    if(text[i]==' ')
+                        {
+                            textOut[i] = ' ';
+                            j--;
+                        }
+                    printf("%c\n",textOut[i]);
+                }
+            else
+                {
+                    textOut[i] = text[i];
+                }
         }
 
 }
@@ -59,9 +83,20 @@ int CharToPosition(char car)
         }
 }
 
+int CharIsInAlphabet(char c)
+{
+    int res = 0;
+    for(int i=0; i<strlen(Alphabet); i++)
+        {
+            if(c==Alphabet[i])
+                {
+                    res=1;
+                }
+        }
+    return res;
+}
 
-
-int IsInAlphabet(int value)
+int MakeInAlphabet(int value)
 {
     if(value > strlen(Alphabet))
         {

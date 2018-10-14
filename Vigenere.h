@@ -3,13 +3,13 @@
 #include "Vigenere.c"
 
 
-void VigenereMethods(char text[],int rot,char textout[]);
+void VigenereMethods(char text[],char pass[],char textout[]);
 
 int CharToPosition(char car);
 
 char OldCharToNewChar(char car,int rot);
 
-int IsInAlphabet(int value);
+int MakeInAlphabet(int value);
 
 
 
