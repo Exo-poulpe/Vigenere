@@ -11,6 +11,8 @@
 
 #define DEFAULT_MAX_SIZE_OUTPUT 100
 #define DEFAULT_MAX_SIZE_INPUT 100
+#define DEFAULT_SIZE 100
+
 static char Alphabet[] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 
 static int CharPos = 0;
