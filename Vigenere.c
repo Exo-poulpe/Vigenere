@@ -2,7 +2,7 @@
  * Author : Troller Fabian
  * Date : 2018.10.11
  * Description : This program can be crypt by methods vigenere
- * Version : 0.0.1.0
+ * Version : 0.1.3.2
  */
 
 #include <stdio.h>
