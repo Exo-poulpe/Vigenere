@@ -40,9 +40,16 @@ char OldCharToNewChar(char car,int rot)
     return car;
 }
 
+char NewCharToOldChar(char car,int rot)
+{
+    CharPos = CharToPosition(car);
+    CharPos = MakeInAlphabet(CharPos-rot);
+    car = Alphabet[CharPos];
+    return car;
+}
 
 
-void VigenereMethods(char text[],char pass[],char textOut[])
+void VigenereCryptMethods(char text[],char pass[],char textOut[])
 {
     for(int i=0,j=0; i<strlen(text); i++,j++)
         {
@@ -54,8 +61,8 @@ void VigenereMethods(char text[],char pass[],char textOut[])
                         }
                     if(text[i]!= ' ')
                         {
-                            printf("Pos of text :%c, %i\n",text[i],CharToPosition(text[i]));
-                            printf("Pos of Char passwd :%c, %i\n",pass[j],CharToPosition(pass[j]));
+                            //printf("Pos of text :%c, %i\n",text[i],CharToPosition(text[i]));
+                            //printf("Pos of Char passwd :%c, %i\n",pass[j],CharToPosition(pass[j]));
                             textOut[i] = OldCharToNewChar(text[i],CharToPosition(pass[j]));
                         }
                     if(text[i]==' ')
@@ -63,7 +70,7 @@ void VigenereMethods(char text[],char pass[],char textOut[])
                             textOut[i] = ' ';
                             j--;
                         }
-                    printf("%c\n",textOut[i]);
+                    //printf("%c\n",textOut[i]);
                 }
             else
                 {
@@ -72,6 +79,43 @@ void VigenereMethods(char text[],char pass[],char textOut[])
         }
 
 }
+
+
+
+void VigenereDecryptMethods(char text[],char pass[],char textOut[])
+{
+    for(int i=0,j=0; i<strlen(text); i++,j++)
+        {
+            if(CharIsInAlphabet(text[i])==1)
+                {
+                    if(j>strlen(pass)-1)
+                        {
+                            j=0;
+                        }
+                    if(text[i]!= ' ')
+                        {
+                            //printf("Pos of text : %c, %i\n",text[i],CharToPosition(text[i]));
+                            //printf("Pos of Char passwd : %c, %i\n",pass[j],CharToPosition(pass[j]));
+                            textOut[i] = NewCharToOldChar(text[i],CharToPosition(pass[j]));
+                            // printf("Text pos : %i  Pass pos : %i  Value : %i\n",CharToPosition(text[i]),CharToPosition(pass[j]),MakeInAlphabet(CharToPosition(text[i])-CharToPosition(pass[j])));
+                        }
+                    if(text[i]==' ')
+                        {
+                            textOut[i] = ' ';
+                            j--;
+                        }
+                    //printf("%c\n",textOut[i]);
+                }
+            else
+                {
+                    textOut[i] = text[i];
+                }
+        }
+}
+
+
+
+
 
 int CharToPosition(char car)
 {
@@ -99,15 +143,14 @@ int CharIsInAlphabet(char c)
 
 int MakeInAlphabet(int value)
 {
+    if(value < 0)
+        {
+            value += sizeof(Alphabet);
+        }
     if(value > strlen(Alphabet))
         {
             value -= sizeof(Alphabet);
         }
-    else if(value < 0)
-        {
-            value += sizeof(Alphabet);
-        }
-
     return value;
 }
 
@@ -119,6 +162,3 @@ char PositionToChar(int pos)
         }
     return Alphabet[pos];
 }
-
-
-

@@ -3,7 +3,7 @@
 #include "Vigenere.c"
 
 
-void VigenereMethods(char text[],char pass[],char textout[]);
+void VigenereCryptMethods(char text[],char pass[],char textout[]);
 
 int CharToPosition(char car);
 
