@@ -11,8 +11,8 @@ windows:
 compile:
 	mkdir "linux";
 	mkdir "windows";
-	$(CC) main.c Vigenere.h -o /linux/Exe;
-	$(WIN) main.c Vigenere.h -o /windows/Exe.exe;
+	$(CC) main.c Vigenere.h -o linux/Exe;
+	$(WIN) main.c Vigenere.h -o windows/Exe.exe;
 
 
 clean:

@@ -4,7 +4,7 @@
 
 static char pass[50];
 static char txt[100],out[100];
-static int opt=0;
+static char opt[2];
 
 
 void CryptMethods();
@@ -13,34 +13,24 @@ void DecryptMethods();
 
 int main(int argc,char *argv[])
 {
-    while((opt = getopt(argc,argv,"cd")) != -1)
-        {
+	printf("Choice option :\nc = Crypt\nd = Decrypt\n");
+	scanf("%s",&opt);
 
-            switch(opt)
-                {
-                case 'c':
-                    CryptMethods();
-                    break;
-                case 'd':
-                    DecryptMethods();
-                    break;
+           if(opt == "-c")
+	   {
+		CryptMethods();
+	   } 
+	   else if(opt == "-d")
+	   {
+		DecryptMethods();
+	   }
+           else
+	   {
 
-                }
-            /*
-                      printf("Entrer votre Text : \n");
-                      fgets(txt,sizeof(txt),stdin);
-                      printf("Entrer votre password : ");
-                      scanf("%s",&pass);
-                      //VigenereCryptMethods(txt,pass,out);
-                      //Out[0] = OldCharToNewChar(txt[0],val);
+	printf("%s\n",opt);
+	      printf("Only '-c' and '-d' methods for the moments\n");
+	   }
 
-                      //printf("In  : %s\n",txt);
-                      //printf("Out : %s\n",out);
-                      VigenereDecryptMethods(txt,pass,out);
-                      printf("In  : %s\n",txt);
-                      printf("Out : %s\n",out);
-                  */
-        }
     return 0;
 }
 
