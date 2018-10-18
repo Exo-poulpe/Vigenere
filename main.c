@@ -24,10 +24,10 @@ int main(int argc,char *argv[])
 	   {
 		DecryptMethods();
 	   }
-           else
+           else if(opt == "-Q")
 	   {
 
-	printf("%s\n",opt);
+	printf("%s/\n",opt);
 	      printf("Only '-c' and '-d' methods for the moments\n");
 	   }
 
