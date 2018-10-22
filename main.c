@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "Vigenere.h"
-#include "argtable3.h"
 
 
 
@@ -55,6 +54,8 @@ void CryptMethods()
     printf("Result : \n============\n%s\n============\n",out);
 
 }
+
+
 void DecryptMethods()
 {
     printf("Entrer votre Text : \n");
