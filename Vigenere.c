@@ -61,16 +61,13 @@ void VigenereCryptMethods(char text[],char pass[],char textOut[])
                         }
                     if(text[i]!= ' ')
                         {
-                            //printf("Pos of text :%c, %i\n",text[i],CharToPosition(text[i]));
-                            //printf("Pos of Char passwd :%c, %i\n",pass[j],CharToPosition(pass[j]));
                             textOut[i] = OldCharToNewChar(text[i],CharToPosition(pass[j]));
                         }
-                    if(text[i]==' ')
+		    else
                         {
-                            textOut[i] = ' ';
+                            textOut[i] = text[i];
                             j--;
                         }
-                    //printf("%c\n",textOut[i]);
                 }
             else
                 {
@@ -79,6 +76,8 @@ void VigenereCryptMethods(char text[],char pass[],char textOut[])
         }
 
 }
+
+
 
 
 
@@ -94,23 +93,53 @@ void VigenereDecryptMethods(char text[],char pass[],char textOut[])
                         }
                     if(text[i]!= ' ')
                         {
-                            //printf("Pos of text : %c, %i\n",text[i],CharToPosition(text[i]));
-                            //printf("Pos of Char passwd : %c, %i\n",pass[j],CharToPosition(pass[j]));
                             textOut[i] = NewCharToOldChar(text[i],CharToPosition(pass[j]));
-                            // printf("Text pos : %i  Pass pos : %i  Value : %i\n",CharToPosition(text[i]),CharToPosition(pass[j]),MakeInAlphabet(CharToPosition(text[i])-CharToPosition(pass[j])));
                         }
-                    if(text[i]==' ')
+		    else
                         {
-                            textOut[i] = ' ';
+                            textOut[i] = text[i];
                             j--;
                         }
-                    //printf("%c\n",textOut[i]);
                 }
             else
                 {
                     textOut[i] = text[i];
                 }
         }
+}
+
+void VigenereCryptFile(char filename[],char pass[],char outname[])
+{
+	FILE *f,*outf;
+	static char txt[255];
+	static char tmp[255];
+	f = fopen(filename,"r");
+	outf = fopen(outname,"w+");
+	while (fgets(txt,255,(FILE*)f))
+	{
+		VigenereCryptMethods(txt,pass,tmp);
+		fputs(tmp,outf);
+	}
+	fclose(f);
+	fclose(outf);
+
+}
+
+void VigenereDecryptFile(char filename[],char pass[],char outname[])
+{
+	FILE *f,*outf;
+	static char txt[255];
+	static char tmp[255];
+	f = fopen(filename,"r");
+	outf = fopen(outname,"w+");
+	while (fgets(txt,255,(FILE*)f))
+	{
+		VigenereDecryptMethods(txt,pass,tmp);
+		fputs(tmp,outf);
+	}
+	fclose(f);
+	fclose(outf);
+
 }
 
 
