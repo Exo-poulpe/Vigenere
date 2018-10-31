@@ -15,27 +15,35 @@ linux:
 
 windows:
 	$(WIN) main.c Vigenere.h -o $(OUTWIN);
+android:
+	$(ANDROID) main.c Vigenere.h -o $(OUTAND);
+
 
 compile:
 	mkdir "linux";
+	mkdir "android";
 	mkdir "windows";
 	mkdir "windows/32";
 	mkdir "windows/64";
 	$(CC) main.c Vigenere.h -o linux/$(OUTLIN);
+	$(ANDROID) main.c Vigenere.h -o android/$(OUTAND); 
 	$(WIN) $(64) main.c Vigenere.h -o windows/64/$(OUTWIN);
 	$(WIN32) $(32) main.c Vigenere.h -o windows/32/$(OUTWIN);
 
 hash:
-	$(HH) -b linux/Exe > $(HNAME);
+	$(HH) -b linux/$(OUTLIN) > $(HNAME);
+	$(HH) -b android/$(OUTAND) >> $(HNAME);
 	$(HH) -b windows/32/$(OUTWIN) >> $(HNAME);
 	$(HH) -b windows/64/$(OUTWIN) >> $(HNAME);
 
 clean:
 	rm -rf $(OUTLIN);
 	rm -rf $(OUTWIN);
+	rm -rf $(OUTAND);
 
 
 cleanAll:
 	rm -rf linux/;
+	rm -rf android/;
 	rm -rf windows/;
 	rm -rf $(HNAME);
