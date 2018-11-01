@@ -1,3 +1,11 @@
+/*
+ * Author : Troller Fabian
+ * Date : 2018/11/01
+ * Description : Source H for use "Vigenere.c"
+ * Version : 1.4.2.0
+ * File : Vigenere.h
+ * 
+ */
 #include <stdio.h>
 #include <string.h>
 #include "Vigenere.c"
