@@ -8,7 +8,6 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 #define DEFAULT_MAX_SIZE_OUTPUT 255

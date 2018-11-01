@@ -10,7 +10,6 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
-#include <stdlib.h>
 #include "Vigenere.h"
 
 
@@ -61,7 +60,7 @@ int main(int argc,char *argv[])
                     break;
                 default:
                     GetHelp(argv[0]);
-                    exit(EXIT_FAILURE);
+                    return -1;
                 }
 
             if(flag==1 && password==1 && fflag==2)
