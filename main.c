@@ -12,10 +12,14 @@
 #include <string.h>
 #include "Vigenere.h"
 
+#define DEFAULT_TEXT_SIZE 255
+#define DEFAULT_PASSWORD_SIZE 50
 
 
-static char pass[50];
-static char txt[255],out[100];
+
+static char VERSION[] = "1.4.2.0";
+static char pass[DEFAULT_PASSWORD_SIZE];
+static char txt[DEFAULT_TEXT_SIZE],out[DEFAULT_TEXT_SIZE];
 
 
 void CryptMethods();
@@ -25,14 +29,14 @@ void DecryptMethods();
 int main(int argc,char *argv[])
 {
     static int password = 0;
-    static char filename[255];
-    static char outfilename[255];
+    static char filename[DEFAULT_TEXT_SIZE];
+    static char outfilename[DEFAULT_TEXT_SIZE];
     static int flag = 0;
     static int fflag = 0;
     static int opt;
 
 
-    while ((opt = getopt(argc, argv, "p:fo:c:d:h")) != -1)
+    while ((opt = getopt(argc, argv, "p:fo:c:d:hv")) != -1)
         {
             switch (opt)
                 {
@@ -58,6 +62,9 @@ int main(int argc,char *argv[])
                     fflag += 1;
                     strcpy(outfilename,optarg);
                     break;
+		case 'v':
+		    GetVersion();
+		    break;
                 default:
                     GetHelp(argv[0]);
                     return -1;
@@ -107,7 +114,14 @@ void GetHelp(char fileName[])
     puts("\t-p : password for crypt or decrypt");
     puts("\t-f : file to crypt or decrypt with this options the options (-c or -d get the filename)");
     puts("\t-o : file output name");
+    puts("\t-v : show version");
     puts("\t-h : show this help");
     printf("\nExemple:\n %s -f -o fileCrypted -p password -c fileToCrypt\n\n",fileName);
 }
 
+
+void GetVersion()
+{
+	puts("Author : Troller Fabian");
+	printf("Version : %s\n",VERSION);
+}
