@@ -7,43 +7,43 @@ OUTWIN = Exe.exe
 32 = -m32
 HH = sha1sum
 HNAME = sha1Hash
-ANDROID = aarch64-linux-gnu-gcc
-OUTAND = Exe
+MAC = gcc
+OUTMAC = Exe
 
 linux:
 	$(CC) main.c Vigenere.h -o $(OUTLIN);
 
 windows:
 	$(WIN) main.c Vigenere.h -o $(OUTWIN);
-android:
-	$(ANDROID) main.c Vigenere.h -o $(OUTAND);
+mac:
+	$(MAC) main.c Vigenere.h -o $(OUTMAC);
 
 
 compile:
 	mkdir "linux";
-	mkdir "android";
+	mkdir "mac";
 	mkdir "windows";
 	mkdir "windows/32";
 	mkdir "windows/64";
 	$(CC) main.c Vigenere.h -o linux/$(OUTLIN);
-	$(ANDROID) main.c Vigenere.h -o android/$(OUTAND); 
+	$(MAC) main.c Vigenere.h -o mac/$(OUTMAC); 
 	$(WIN) $(64) main.c Vigenere.h -o windows/64/$(OUTWIN);
 	$(WIN32) $(32) main.c Vigenere.h -o windows/32/$(OUTWIN);
 
 hash:
 	$(HH) -b linux/$(OUTLIN) > $(HNAME);
-	$(HH) -b android/$(OUTAND) >> $(HNAME);
+	$(HH) -b mac/$(OUTMAC) >> $(HNAME);
 	$(HH) -b windows/32/$(OUTWIN) >> $(HNAME);
 	$(HH) -b windows/64/$(OUTWIN) >> $(HNAME);
 
 clean:
 	rm -rf $(OUTLIN);
 	rm -rf $(OUTWIN);
-	rm -rf $(OUTAND);
+	rm -rf $(OUTMAC);
 
 
 cleanAll:
 	rm -rf linux/;
-	rm -rf android/;
+	rm -rf mac/;
 	rm -rf windows/;
 	rm -rf $(HNAME);
